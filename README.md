@@ -3,7 +3,7 @@
   <img src="logo.png" alt="Logo del proyecto" width="300">
 </p>
 
-# ZaidinCoffeScraper
+# ZaidinCoffeeScraper
 Tinny Cafés Zaidin / Soy Cafetera Coffee Scraper
 
 This is not a serious project, just a scraper that helps me search for the cheapest to most expensive coffees our my favourite coffee roaster (with the process type).
