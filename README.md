@@ -17,9 +17,8 @@ This Python script uses [Playwright](https://playwright.dev/python/) to scrape c
 - Headless scraping via Playwright (Chromium)
 - Auto-detection of product packaging (250g, 500g, etc.)
 - Smart price normalization to €/kg
-- Process and origin parsing from product pages
-- Handles multiple layout versions (grid and legacy)
-- Outputs grouped coffee info by origin
+- Process parsing from product pages
+- Results ordered by price
 - Automatically handles cookies and lazy-loaded pages
 
 ---
