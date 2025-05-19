@@ -1,5 +1,5 @@
 from application.configuration.scraping_config import ScrapingConfig
-from dataclasses import dataclass, field
+from dataclasses import field
 from typing import List
 
 class ScrapingConfig(ScrapingConfig):

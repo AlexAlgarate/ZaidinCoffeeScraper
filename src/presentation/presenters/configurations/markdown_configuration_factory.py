@@ -1,4 +1,3 @@
-from typing import List
 from .configurations import TableConfig, ColumnConfig
 
 class MarkdownTableConfigFactory:

@@ -1,7 +1,6 @@
 from typing import List
 from domain.repositories.coffee_repository import CoffeeRepository
 from domain.entities.coffee import Coffee
-from typing import List
 
 class FetchCoffees:
     def __init__(self, repository: CoffeeRepository):

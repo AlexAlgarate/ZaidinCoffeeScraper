@@ -1,11 +1,8 @@
 from typing import List
 from domain.entities.coffee import Coffee
 from application.interfaces.coffe_pressenter import CoffeePresenterInterface
-from .configurations.configurations import TableConfig, ColumnConfig
-from typing import List, Protocol
-from domain.entities.coffee import Coffee
-from application.interfaces.coffe_pressenter import CoffeePresenterInterface
 from .configurations.configurations import TableConfig
+from typing import Protocol
 
 class TableFormatter(Protocol):
     def format_header(self, config: TableConfig) -> List[str]: ...
