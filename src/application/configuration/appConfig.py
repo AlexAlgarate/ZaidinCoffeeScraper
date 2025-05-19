@@ -2,15 +2,18 @@ from dataclasses import dataclass, field
 from typing import List
 from domain.configuration.scraping_config import ScrapingConfig
 
+
 @dataclass(frozen=True)
 class AppConfig(ScrapingConfig):
     base_url: str = "https://soycafetera.es"
-    _product_selectors: List[str] = field(default_factory=lambda: [
-        "div.grid__products div.grid-product",
-        ".grid-product",
-        "ul.products li.product",
-        '.product-item'
-    ])
+    _product_selectors: List[str] = field(
+        default_factory=lambda: [
+            "div.grid__products div.grid-product",
+            ".grid-product",
+            "ul.products li.product",
+            ".product-item",
+        ]
+    )
 
     def get_product_selectors(self) -> List[str]:
         return self._product_selectors
@@ -19,5 +22,5 @@ class AppConfig(ScrapingConfig):
         return self.base_url
 
     @classmethod
-    def create_default(cls) -> 'AppConfig':
+    def create_default(cls) -> "AppConfig":
         return cls()

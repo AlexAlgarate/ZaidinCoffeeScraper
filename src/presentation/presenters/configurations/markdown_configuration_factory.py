@@ -1,5 +1,6 @@
 from .configurations import TableConfig, ColumnConfig
 
+
 class MarkdownTableConfigFactory:
     @staticmethod
     def create_coffee_table_config() -> TableConfig:
@@ -9,5 +10,5 @@ class MarkdownTableConfigFactory:
                 ColumnConfig("Price", 12, "price_per_kg", "**{:.2f}€/kg**"),
                 ColumnConfig("Process", 15, "process", "*{}*"),
             ],
-            separator="-"
+            separator="-",
         )

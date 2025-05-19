@@ -2,10 +2,12 @@ from abc import ABC, abstractmethod
 from typing import List, Any
 from application.dtos.coffee_dtos import ProductBasicInfo
 
+
 class ProductInfoExtractor(ABC):
     @abstractmethod
     async def extract_basic_info(self, product: Any) -> ProductBasicInfo:
         pass
+
 
 class ProductDetailsExtractor(ABC):
     @abstractmethod

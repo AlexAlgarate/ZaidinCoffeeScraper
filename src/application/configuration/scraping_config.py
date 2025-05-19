@@ -1,7 +1,7 @@
-
 from abc import abstractmethod
 from typing import List
 from domain.configuration.scraping_config import ScrapingConfig
+
 
 class ScrapingConfig(ScrapingConfig):
     def __init__(self, selectors: List[str]):

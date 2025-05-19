@@ -1,9 +1,9 @@
-
 from typing import List
 from domain.services.coffee_scraper import CoffeeScraper
 from domain.services.web_client import WebClient
 from infrastructure.services.scraping_service import ScrapingService
 from application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+
 
 class CoffeeScraper(CoffeeScraper):
     def __init__(self, web_client: WebClient, scraping_service: ScrapingService):

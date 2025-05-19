@@ -1,6 +1,7 @@
 from typing import List, Tuple
 from domain.repositories.category_repository import CategoryRepository
 
+
 class FetchCategories:
     def __init__(self, repository: CategoryRepository):
         self.repository = repository

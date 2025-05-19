@@ -2,12 +2,13 @@ from domain.repositories.coffee_repository import CoffeeRepository
 from domain.repositories.category_repository import CategoryRepository
 from application.interfaces.coffe_pressenter import CoffeePresenterInterface
 
+
 class CoffeeScraperApp:
     def __init__(
         self,
         coffee_repository: CoffeeRepository,
         category_repository: CategoryRepository,
-        presenter: CoffeePresenterInterface
+        presenter: CoffeePresenterInterface,
     ):
         self._coffee_repository = coffee_repository
         self._category_repository = category_repository

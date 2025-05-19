@@ -2,6 +2,7 @@ from typing import List, Tuple
 from domain.repositories.category_repository import CategoryRepository
 from domain.services.web_client import WebClient
 
+
 class CategoryRepositoryImpl(CategoryRepository):
     def __init__(self, client: WebClient, base_url: str):
         self._client = client
@@ -12,8 +13,8 @@ class CategoryRepositoryImpl(CategoryRepository):
         try:
             page = await browser.new_page()
             print("→ Loading main page...")
-            await page.goto(f"{self._base_url}/tienda", wait_until='networkidle')
-            
+            await page.goto(f"{self._base_url}/tienda", wait_until="networkidle")
+
             try:
                 await page.click("button:has-text('Aceptar')", timeout=3000)
                 print("✓ Cookies accepted")
@@ -22,7 +23,7 @@ class CategoryRepositoryImpl(CategoryRepository):
 
             category_links = await page.query_selector_all("a.grid-category__title")
             print(f"Found {len(category_links)} category links,... scraping...")
-            
+
             categories = []
             for link in category_links:
                 name = await link.inner_text()

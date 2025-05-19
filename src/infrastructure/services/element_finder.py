@@ -3,6 +3,7 @@ from typing import List, Any
 from domain.services.element_finder import ElementFinder
 from infrastructure.configuration.scraping_config import ScrapingConfig
 
+
 class WebElementFinder(ElementFinder):
     def __init__(self, config: ScrapingConfig):
         self._config = config

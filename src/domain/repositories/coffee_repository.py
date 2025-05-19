@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List
 from domain.entities.coffee import Coffee
 
+
 class CoffeeRepository(ABC):
     @abstractmethod
     async def fetch_by_category(self, category_url: str) -> List[Coffee]:
