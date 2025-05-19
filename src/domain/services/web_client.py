@@ -1,10 +1,10 @@
 from abc import abstractmethod
-from typing import Any
 from contextlib import AbstractAsyncContextManager
-from typing import Protocol
+from typing import Any, Protocol
+
 
 class Browser(Protocol):
-    async def new_page(self) -> 'Page': ...
+    async def new_page(self) -> None: ...
     async def close(self) -> None: ...
 
 

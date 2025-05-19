@@ -1,23 +1,25 @@
-from typing import List
-from domain.entities.coffee import Coffee
+from typing import Any, List, Protocol
+
 from application.interfaces.coffe_pressenter import CoffeePresenterInterface
+from domain.entities.coffee import Coffee
+
 from .configurations.configurations import TableConfig
-from typing import Protocol
+
 
 class TableFormatter(Protocol):
     def format_header(self, config: TableConfig) -> List[str]: ...
-    def format_row(self, config: TableConfig, data: any) -> str: ...
+    def format_row(self, config: TableConfig, data: Any) -> str: ...
+
 
 class MarkdownTableFormatter:
     def format_header(self, config: TableConfig) -> List[str]:
         headers = [f"{col.header}" for col in config.columns]
-        alignments = [f":{config.separator * (col.width-2)}:" for col in config.columns]
-        return [
-            f"| {' | '.join(headers)} |",
-            f"| {' | '.join(alignments)} |"
+        alignments = [
+            f":{config.separator * (col.width - 2)}:" for col in config.columns
         ]
+        return [f"| {' | '.join(headers)} |", f"| {' | '.join(alignments)} |"]
 
-    def format_row(self, config: TableConfig, data: any) -> str:
+    def format_row(self, config: TableConfig, data: Any) -> str:
         cells = []
         for col in config.columns:
             value = getattr(data, col.field)
@@ -28,10 +30,9 @@ class MarkdownTableFormatter:
             cells.append(formatted)
         return f"| {' | '.join(cells)} |"
 
+
 class MarkdownPresenter(CoffeePresenterInterface):
-    def __init__(self, 
-                 config: TableConfig,
-                 formatter: TableFormatter = None):
+    def __init__(self, config: TableConfig, formatter: TableFormatter = None):
         self._config = config
         self._formatter = formatter or MarkdownTableFormatter()
 
