@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import List, Any
-from application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+from typing import Any, List
+
+from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
 
 
 class ScrapingServiceInterface(ABC):

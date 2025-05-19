@@ -1,8 +1,9 @@
 from typing import Optional
-from domain.mappers.coffee_mapper import CoffeeMapper
-from domain.entities.coffee import Coffee
-from domain.entities.price import Price
-from application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+
+from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+from src.domain.entities.coffee import Coffee
+from src.domain.entities.price import Price
+from src.domain.mappers.coffee_mapper import CoffeeMapper
 
 
 class CoffeeMapperImpl(CoffeeMapper):

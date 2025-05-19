@@ -1,8 +1,9 @@
 from typing import List
-from domain.services.coffee_scraper import CoffeeScraper
-from domain.services.web_client import WebClient
-from infrastructure.services.scraping_service import ScrapingService
-from application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+
+from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+from src.domain.services.coffee_scraper import CoffeeScraper
+from src.domain.services.web_client import WebClient
+from src.infrastructure.services.scraping_service import ScrapingService
 
 
 class CoffeeScraper(CoffeeScraper):

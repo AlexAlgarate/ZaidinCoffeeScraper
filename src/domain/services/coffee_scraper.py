@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
-from application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+
+from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
 
 
 class CoffeeScraper(ABC):

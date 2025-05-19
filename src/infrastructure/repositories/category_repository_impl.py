@@ -1,6 +1,7 @@
 from typing import List, Tuple
-from domain.repositories.category_repository import CategoryRepository
-from domain.services.web_client import WebClient
+
+from src.domain.repositories.category_repository import CategoryRepository
+from src.domain.services.web_client import WebClient
 
 
 class CategoryRepositoryImpl(CategoryRepository):

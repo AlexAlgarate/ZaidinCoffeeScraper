@@ -1,6 +1,6 @@
-from domain.repositories.coffee_repository import CoffeeRepository
-from domain.repositories.category_repository import CategoryRepository
-from application.interfaces.coffe_pressenter import CoffeePresenterInterface
+from src.application.interfaces.coffe_pressenter import CoffeePresenterInterface
+from src.domain.repositories.category_repository import CategoryRepository
+from src.domain.repositories.coffee_repository import CoffeeRepository
 
 
 class CoffeeScraperApp:

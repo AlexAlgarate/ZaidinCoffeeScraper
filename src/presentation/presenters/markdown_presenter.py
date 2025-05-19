@@ -1,7 +1,7 @@
 from typing import Any, List, Protocol
 
-from application.interfaces.coffe_pressenter import CoffeePresenterInterface
-from domain.entities.coffee import Coffee
+from src.application.interfaces.coffe_pressenter import CoffeePresenterInterface
+from src.domain.entities.coffee import Coffee
 
 from .configurations.configurations import TableConfig
 

@@ -1,5 +1,6 @@
 from typing import List, Tuple
-from domain.repositories.category_repository import CategoryRepository
+
+from src.domain.repositories.category_repository import CategoryRepository
 
 
 class FetchCategories:

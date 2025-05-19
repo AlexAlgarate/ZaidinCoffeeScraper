@@ -1,6 +1,7 @@
 from typing import List
-from domain.repositories.coffee_repository import CoffeeRepository
-from domain.entities.coffee import Coffee
+
+from src.domain.entities.coffee import Coffee
+from src.domain.repositories.coffee_repository import CoffeeRepository
 
 
 class FetchCoffees:

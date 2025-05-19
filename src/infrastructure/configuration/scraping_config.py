@@ -1,6 +1,7 @@
-from application.configuration.scraping_config import ScrapingConfig
 from dataclasses import field
 from typing import List
+
+from src.application.configuration.scraping_config import ScrapingConfig
 
 
 class ScrapingConfig(ScrapingConfig):
