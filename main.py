@@ -1,7 +1,7 @@
 import asyncio
 
-from application.use_cases.coffee_scraper_app import CoffeeScraperApp
-from di.diContainer import Container
+from src.application.use_cases.coffee_scraper_app import CoffeeScraperApp
+from src.di.diContainer import Container
 
 
 async def run_app() -> int:

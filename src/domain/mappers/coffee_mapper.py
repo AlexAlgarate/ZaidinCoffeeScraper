@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Optional
-from domain.entities.coffee import Coffee
-from application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+
+from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+from src.domain.entities.coffee import Coffee
 
 
 class CoffeeMapper(ABC):

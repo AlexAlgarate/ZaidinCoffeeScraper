@@ -1,5 +1,6 @@
 from playwright.async_api import async_playwright
-from domain.services.web_client import WebClient, Browser
+
+from src.domain.services.web_client import Browser, WebClient
 
 
 class PlaywrightClient(WebClient):

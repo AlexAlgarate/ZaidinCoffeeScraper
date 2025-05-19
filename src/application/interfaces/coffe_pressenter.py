@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
-from domain.entities.coffee import Coffee
+
+from src.domain.entities.coffee import Coffee
 
 
 class CoffeePresenterInterface(ABC):

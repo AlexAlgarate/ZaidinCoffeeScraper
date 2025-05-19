@@ -1,18 +1,18 @@
-from typing import List, Any
-from domain.services.element_finder import ElementFinder
-from domain.services.process_detector import ProcessDetector
-from domain.services.product_extractors import (
+from typing import Any, List
+
+from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+from src.domain.services.element_finder import ElementFinder
+from src.domain.services.page_navigator import PageNavigator
+from src.domain.services.process_detector import ProcessDetector
+from src.domain.services.product_extractors import (
     ProductDetailsExtractor,
     ProductInfoExtractor,
 )
-from domain.services.scraping_service import (
+from src.domain.services.scraping_service import (
     ProductCollector,
     ProductDetailCollector,
     ScrapingServiceInterface,
 )
-from domain.services.page_navigator import PageNavigator
-
-from application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
 
 
 class ProductCollectorImpl(ProductCollector):

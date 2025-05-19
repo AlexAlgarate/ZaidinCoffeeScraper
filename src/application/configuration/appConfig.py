@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
-from domain.configuration.scraping_config import ScrapingConfig
+
+from src.domain.configuration.scraping_config import ScrapingConfig
 
 
 @dataclass(frozen=True)

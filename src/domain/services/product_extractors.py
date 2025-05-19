@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import List, Any
-from application.dtos.coffee_dtos import ProductBasicInfo
+from typing import Any, List
+
+from src.application.dtos.coffee_dtos import ProductBasicInfo
 
 
 class ProductInfoExtractor(ABC):

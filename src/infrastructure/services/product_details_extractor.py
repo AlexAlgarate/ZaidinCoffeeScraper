@@ -1,7 +1,8 @@
 import re
 from typing import Any, List
-from application.dtos.coffee_dtos import ProductDetails
-from domain.services.product_extractors import ProductDetailsExtractor
+
+from src.application.dtos.coffee_dtos import ProductDetails
+from src.domain.services.product_extractors import ProductDetailsExtractor
 
 
 class WebProductDetailsExtractor(ProductDetailsExtractor):

@@ -1,7 +1,7 @@
-from typing import List, Any
+from typing import Any, List
 
-from domain.services.element_finder import ElementFinder
-from infrastructure.configuration.scraping_config import ScrapingConfig
+from src.domain.services.element_finder import ElementFinder
+from src.infrastructure.configuration.scraping_config import ScrapingConfig
 
 
 class WebElementFinder(ElementFinder):

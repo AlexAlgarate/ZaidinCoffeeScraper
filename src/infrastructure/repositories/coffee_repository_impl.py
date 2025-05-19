@@ -1,11 +1,11 @@
 import asyncio
 from typing import Any, Callable, List
 
-from domain.entities.coffee import Coffee
-from domain.exceptions.coffee_exceptions import CoffeeScrapingError
-from domain.repositories.coffee_repository import CoffeeRepository
-from infrastructure.mappers.coffee_mapper import CoffeeMapper
-from infrastructure.services.coffee_scraper import CoffeeScraper
+from src.domain.entities.coffee import Coffee
+from src.domain.exceptions.coffee_exceptions import CoffeeScrapingError
+from src.domain.repositories.coffee_repository import CoffeeRepository
+from src.infrastructure.mappers.coffee_mapper import CoffeeMapper
+from src.infrastructure.services.coffee_scraper import CoffeeScraper
 
 
 class CoffeeRepositoryImpl(CoffeeRepository):

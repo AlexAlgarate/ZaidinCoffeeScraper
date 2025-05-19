@@ -1,6 +1,7 @@
 from abc import abstractmethod
 from typing import List
-from domain.configuration.scraping_config import ScrapingConfig
+
+from src.domain.configuration.scraping_config import ScrapingConfig
 
 
 class ScrapingConfig(ScrapingConfig):
