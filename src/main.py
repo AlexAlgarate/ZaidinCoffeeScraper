@@ -1,15 +1,16 @@
 import asyncio
+
 from application.use_cases.coffee_scraper_app import CoffeeScraperApp
 from di.diContainer import Container
 
 
-async def run_app() -> None:
+async def run_app() -> int:
     container = Container()
-    
+
     app = CoffeeScraperApp(
         coffee_repository=container.coffee_repository(),
         category_repository=container.category_repository(),
-        presenter=container.presenter()
+        presenter=container.presenter(),
     )
 
     try:
@@ -21,8 +22,10 @@ async def run_app() -> None:
         return 1
     return 0
 
+
 def main() -> int:
     return asyncio.run(run_app())
+
 
 if __name__ == "__main__":
     exit(main())
