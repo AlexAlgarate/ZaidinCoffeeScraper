@@ -1,10 +1,11 @@
 import asyncio
-from typing import List, Callable, Any, Awaitable
+from typing import Any, Callable, List
+
 from domain.entities.coffee import Coffee
 from domain.exceptions.coffee_exceptions import CoffeeScrapingError
 from domain.repositories.coffee_repository import CoffeeRepository
-from infrastructure.services.coffee_scraper import CoffeeScraper
 from infrastructure.mappers.coffee_mapper import CoffeeMapper
+from infrastructure.services.coffee_scraper import CoffeeScraper
 
 
 class CoffeeRepositoryImpl(CoffeeRepository):
@@ -12,7 +13,7 @@ class CoffeeRepositoryImpl(CoffeeRepository):
         self,
         coffee_scraper: CoffeeScraper,
         coffee_mapper: CoffeeMapper,
-        async_runner: Callable[[Awaitable[Any]], Any] = asyncio.run,
+        async_runner: Callable[..., Any] = asyncio.run,
     ):
         self._scraper = coffee_scraper
         self._mapper = coffee_mapper
