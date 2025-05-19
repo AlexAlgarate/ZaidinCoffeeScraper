@@ -1,9 +1,9 @@
+# ZaidinCoffeeScraper
 
 <p align="center">
   <img src="logo.png" alt="Logo del proyecto" width="300">
 </p>
 
-# ZaidinCoffeeScraper
 Tinny Cafés Zaidin / Soy Cafetera Coffee Scraper
 
 This is not a serious project, just a scraper that helps me search for the cheapest to most expensive coffees our my favourite coffee roaster (with the process type).
@@ -32,9 +32,17 @@ This Python script uses [Playwright](https://playwright.dev/python/) to scrape c
 Install dependencies:
 
 ```bash
-pip install playwright dependency-injector
-playwright install
+uv init
+uv add playwright dependency-injector
+uv run playwright install
 ```
+
+And run main:
+
+```bash
+uv run src/main.py
+```
+
 ---
 
 ## Status
