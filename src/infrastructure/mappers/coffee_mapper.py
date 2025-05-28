@@ -1,5 +1,6 @@
 from typing import Optional
 
+from domain.exceptions.coffee_exceptions import PriceParsingError
 from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
 from src.application.interfaces.logger import ILogger
 from src.domain.entities.coffee import Coffee
@@ -30,6 +31,5 @@ class CoffeeMapperImpl(CoffeeMapper):
                 formats=details.formats,
                 packages=details.packages,
             )
-        except Exception as e:
-            self._logger.error(f"Error mapping coffee {basic_info.name}: {e}")
-            return None
+        except PriceParsingError as e:
+            self._logger.error(f"Error mapping coffee {basic_info.name}: {e.original}")
