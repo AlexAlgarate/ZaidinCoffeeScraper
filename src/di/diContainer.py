@@ -14,6 +14,9 @@ class Container(containers.DeclarativeContainer):
     web_client: providers.Singleton = providers.Singleton(
         "src.infrastructure.scraping.playwright_client.PlaywrightClient"
     )
+    logger: providers.Singleton = providers.Singleton(
+        "src.infrastructure.logging.logger.LoggerImpl", name="coffee_scraper_logger"
+    )
 
     # Core Services
     element_finder: providers.Singleton = providers.Singleton(
@@ -34,7 +37,8 @@ class Container(containers.DeclarativeContainer):
     )
 
     product_details_extractor: providers.Singleton = providers.Singleton(
-        "src.infrastructure.services.product_details_extractor.WebProductDetailsExtractor"
+        "src.infrastructure.services.product_details_extractor.WebProductDetailsExtractor",
+        logger=logger,
     )
 
     # Collectors
@@ -42,6 +46,7 @@ class Container(containers.DeclarativeContainer):
         "src.infrastructure.services.scraping_service.ProductCollectorImpl",
         product_info_extractor=product_info_extractor,
         element_finder=element_finder,
+        logger=logger,
     )
 
     detail_collector: providers.Singleton = providers.Singleton(
@@ -60,7 +65,8 @@ class Container(containers.DeclarativeContainer):
 
     # Mappers
     coffee_mapper: providers.Singleton = providers.Singleton(
-        "src.infrastructure.mappers.coffee_mapper.CoffeeMapperImpl"
+        "src.infrastructure.mappers.coffee_mapper.CoffeeMapperImpl",
+        logger=logger,
     )
 
     # Presenters
@@ -78,6 +84,7 @@ class Container(containers.DeclarativeContainer):
         "src.infrastructure.services.coffee_scraper.CoffeeScraper",
         web_client=web_client,
         scraping_service=scraping_service,
+        logger=logger,
     )
 
     # Repositories
@@ -91,4 +98,5 @@ class Container(containers.DeclarativeContainer):
         "src.infrastructure.repositories.category_repository_impl.CategoryRepositoryImpl",
         client=web_client,
         base_url=config.provided.base_url,
+        logger=logger,
     )

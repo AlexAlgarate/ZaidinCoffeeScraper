@@ -1,6 +1,7 @@
 import re
 from dataclasses import dataclass
-from typing import Optional
+
+from domain.exceptions.coffee_exceptions import PriceParsingError
 
 
 @dataclass(frozen=True)
@@ -9,7 +10,7 @@ class Price:
     weight_grams: int = 250
 
     @classmethod
-    def from_text(cls, price_text: str, format_text: str) -> Optional["Price"]:
+    def from_text(cls, price_text: str, format_text: str) -> "Price" | None:
         try:
             clean = price_text.strip().replace("€", "")
             if "," in clean and "." not in clean:
@@ -30,10 +31,7 @@ class Price:
 
             return cls(amount=price_per_kg, weight_grams=weight_grams)
         except Exception as e:
-            print(
-                f"Error parsing price '{price_text}' with format '{format_text}': {e}"
-            )
-            return None
+            raise PriceParsingError(price_text, format_text, e)
 
     @property
     def price_per_kg(self) -> float:

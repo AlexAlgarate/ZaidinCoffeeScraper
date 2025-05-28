@@ -32,3 +32,10 @@ class DetailExtractionError(CoffeeException):
     """Raised when product details cannot be extracted"""
 
     pass
+
+
+class PriceParsingError(Exception):
+    def __init__(self, price_text: str, format_text: str, original: Exception):
+        msg = f"Error parsing price '{price_text}' with format '{format_text}'"
+        super().__init__(msg)
+        self.original = original

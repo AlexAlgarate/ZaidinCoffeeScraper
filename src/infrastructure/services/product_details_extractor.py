@@ -2,10 +2,14 @@ import re
 from typing import Any, List
 
 from src.application.dtos.coffee_dtos import ProductDetails
+from src.application.interfaces.logger import ILogger
 from src.domain.services.product_extractors import ProductDetailsExtractor
 
 
 class WebProductDetailsExtractor(ProductDetailsExtractor):
+    def __init__(self, logger: ILogger):
+        self._logger = logger
+
     async def extract(self, page: Any) -> ProductDetails:
         sku = await self.extract_sku(page)
         displayed_price = await self.extract_displayed_price(page)
@@ -93,7 +97,7 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
 
             return formats if formats else ["250g"]
         except Exception as e:
-            print(f"Error extracting formats: {e}")
+            self._logger.error(f"Error extracting formats: {e}")
             return ["250g"]
 
     async def extract_packages(self, page: Any) -> List[str]:
