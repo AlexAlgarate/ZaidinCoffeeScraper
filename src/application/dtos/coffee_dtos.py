@@ -1,12 +1,12 @@
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List
 
 
 @dataclass
 class ProductBasicInfo:
     name: str
     price_text: str
-    href: Optional[str] = None
+    href: str | None = None
 
 
 @dataclass

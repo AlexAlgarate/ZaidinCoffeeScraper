@@ -1,5 +1,3 @@
-from typing import Optional
-
 from domain.exceptions.coffee_exceptions import PriceParsingError
 from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
 from src.application.interfaces.logger import ILogger
@@ -14,7 +12,7 @@ class CoffeeMapperImpl(CoffeeMapper):
 
     def to_entity(
         self, basic_info: ProductBasicInfo, details: ProductDetails
-    ) -> Optional[Coffee]:
+    ) -> Coffee | None:
         try:
             format_text = details.formats[0] if details.formats else "250g"
             price = Price.from_text(basic_info.price_text, format_text)
