@@ -37,7 +37,8 @@ class Container(containers.DeclarativeContainer):
     )
 
     product_details_extractor: providers.Singleton = providers.Singleton(
-        "src.infrastructure.services.product_details_extractor.WebProductDetailsExtractor"
+        "src.infrastructure.services.product_details_extractor.WebProductDetailsExtractor",
+        logger=logger,
     )
 
     # Collectors
@@ -64,7 +65,8 @@ class Container(containers.DeclarativeContainer):
 
     # Mappers
     coffee_mapper: providers.Singleton = providers.Singleton(
-        "src.infrastructure.mappers.coffee_mapper.CoffeeMapperImpl"
+        "src.infrastructure.mappers.coffee_mapper.CoffeeMapperImpl",
+        logger=logger,
     )
 
     # Presenters

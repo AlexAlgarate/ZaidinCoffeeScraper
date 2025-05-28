@@ -1,12 +1,16 @@
 from typing import Optional
 
 from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+from src.application.interfaces.logger import ILogger
 from src.domain.entities.coffee import Coffee
 from src.domain.entities.price import Price
 from src.domain.mappers.coffee_mapper import CoffeeMapper
 
 
 class CoffeeMapperImpl(CoffeeMapper):
+    def __init__(self, logger: ILogger):
+        self._logger = logger
+
     def to_entity(
         self, basic_info: ProductBasicInfo, details: ProductDetails
     ) -> Optional[Coffee]:
@@ -27,5 +31,5 @@ class CoffeeMapperImpl(CoffeeMapper):
                 packages=details.packages,
             )
         except Exception as e:
-            print(f"Error mapping coffee {basic_info.name}: {e}")
+            self._logger.error(f"Error mapping coffee {basic_info.name}: {e}")
             return None
