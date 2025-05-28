@@ -2,9 +2,12 @@ import asyncio
 
 from src.application.use_cases.coffee_scraper_app import CoffeeScraperApp
 from src.di.diContainer import Container
+from src.infrastructure.logging.config import configure_logging
 
 
 async def run_app() -> int:
+    configure_logging()
+
     container = Container()
 
     app = CoffeeScraperApp(
@@ -13,12 +16,13 @@ async def run_app() -> int:
         presenter=container.presenter(),
     )
 
+    logger = container.logger()
     try:
-        print("Starting scraper...")
+        logger.info("Starting scraper...")
         result = await app.run()
-        print(result)
+        logger.info(result)
     except Exception as e:
-        print(f"Error running application: {str(e)}")
+        logger.error(f"Error running application: {str(e)}")
         return 1
     return 0
 
