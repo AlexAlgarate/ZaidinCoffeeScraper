@@ -1,6 +1,7 @@
 from typing import Any, List
 
 from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
+from src.application.interfaces.logger import ILogger
 from src.domain.services.element_finder import ElementFinder
 from src.domain.services.page_navigator import PageNavigator
 from src.domain.services.process_detector import ProcessDetector
@@ -20,9 +21,11 @@ class ProductCollectorImpl(ProductCollector):
         self,
         product_info_extractor: ProductInfoExtractor,
         element_finder: ElementFinder,
+        logger: ILogger,
     ):
         self._product_info_extractor = product_info_extractor
         self._element_finder = element_finder
+        self._logger = logger
 
     async def collect_products(self, page: Any) -> List[ProductBasicInfo]:
         products = []
@@ -36,7 +39,7 @@ class ProductCollectorImpl(ProductCollector):
                 if product_info:
                     products.append(product_info)
             except Exception as e:
-                print(f"Error extracting product info: {str(e)}")
+                self._logger.error(f"Error extracting product info: {str(e)}")
                 continue
         return products
 
