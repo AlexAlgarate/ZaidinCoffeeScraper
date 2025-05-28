@@ -24,10 +24,6 @@ class CoffeeScraper(CoffeeScraper):
                 f"Found {len(products)} products in category {url}... scraping details..."
             )
 
-            for product in products:
-                self._logger.info(
-                    f"Product: {product.name}, URL: {product.href}, PRICE: {product.price_text}"
-                )
             await browser.close_page(page)
             return products
 
