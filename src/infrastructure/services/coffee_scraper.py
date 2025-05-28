@@ -16,6 +16,14 @@ class CoffeeScraper(CoffeeScraper):
             page = await browser.new_page()
             await browser.goto(page, url)
             products = await self._scraping_service.get_products(page)
+            print(
+                f"Found {len(products)} products in category {url}... scraping details..."
+            )
+
+            for product in products:
+                print(
+                    f"Product: {product.name}, URL: {product.href}, PRICE: {product.price_text}"
+                )
             await browser.close_page(page)
             return products
 

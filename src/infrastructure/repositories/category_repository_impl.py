@@ -26,12 +26,20 @@ class CategoryRepositoryImpl(CategoryRepository):
             print(f"Found {len(category_links)} category links,... scraping...")
 
             categories = []
+            tarjet_categories = ["Gama de cafés"]
+
             for link in category_links:
-                name = await link.inner_text()
+                name = (await link.inner_text()).strip()
                 url = await link.get_attribute("href")
-                if name and url:
-                    categories.append((name.strip(), url))
+
+                if name in tarjet_categories:
+                    print(f"Selected category: {name}")
+                    categories.append((name, url))
+
+                else:
+                    print(f"Skipping category: {name}")
 
             return categories
+
         finally:
             await browser.close()
