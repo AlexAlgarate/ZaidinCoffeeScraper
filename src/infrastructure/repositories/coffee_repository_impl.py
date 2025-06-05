@@ -25,6 +25,8 @@ class CoffeeRepositoryImpl(CoffeeRepository):
             products = await self._scraper.scrape_category(category_url)
 
             for product in products:
+                if product.name.startswith(".Vale"):
+                    continue
                 if product.href:
                     details = await self._scraper.scrape_details(product.href)
                     coffee = self._mapper.to_entity(product, details)
