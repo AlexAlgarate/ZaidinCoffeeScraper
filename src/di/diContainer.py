@@ -89,6 +89,7 @@ class Container(containers.DeclarativeContainer):
         web_client=web_client,
         scraping_service=scraping_service,
         logger=logger,
+        base_url=config.provided.base_url,
     )
 
     # Repositories
