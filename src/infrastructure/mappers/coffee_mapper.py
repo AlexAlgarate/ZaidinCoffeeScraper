@@ -31,3 +31,4 @@ class CoffeeMapperImpl(CoffeeMapper):
             )
         except PriceParsingError as e:
             self._logger.error(f"Error mapping coffee {basic_info.name}: {e.original}")
+            return None
