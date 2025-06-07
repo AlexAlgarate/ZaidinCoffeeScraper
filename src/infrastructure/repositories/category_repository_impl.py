@@ -1,4 +1,5 @@
 from typing import List, Tuple
+from urllib.parse import urljoin
 
 from src.application.interfaces.logger import ILogger
 from src.domain.repositories.category_repository import CategoryRepository
@@ -37,7 +38,8 @@ class CategoryRepositoryImpl(CategoryRepository):
                 url = await link.get_attribute("href")
 
                 if name in tarjet_categories and url:
-                    categories.append((name, url))
+                    full_url = urljoin(self._base_url, url)
+                    categories.append((name, full_url))
 
             return categories
 
