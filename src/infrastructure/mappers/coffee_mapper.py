@@ -22,7 +22,6 @@ class CoffeeMapperImpl(CoffeeMapper):
 
             return Coffee(
                 name=basic_info.name,
-                sku=details.sku,
                 price_per_kg=price.amount,
                 process=details.process,
                 origins=details.origins,

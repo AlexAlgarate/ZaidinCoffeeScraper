@@ -11,7 +11,6 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
         self._logger = logger
 
     async def extract(self, page: Any) -> ProductDetails:
-        sku = await self.extract_sku(page)
         displayed_price = await self.extract_displayed_price(page)
         process = await self.extract_process(page)
         origins = await self.extract_origins(page)
@@ -19,20 +18,12 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
         packages = await self.extract_packages(page)
 
         return ProductDetails(
-            sku=sku,
             displayed_price=displayed_price,
             process=process,
             origins=origins,
             formats=formats,
             packages=packages,
         )
-
-    async def extract_sku(self, page: Any) -> str:
-        try:
-            sku_el = await page.query_selector('meta[itemprop="sku"]')
-            return await sku_el.get_attribute("content") if sku_el else "Unknown"
-        except Exception:
-            return "Unknown"
 
     async def extract_displayed_price(self, page: Any) -> str:
         try:

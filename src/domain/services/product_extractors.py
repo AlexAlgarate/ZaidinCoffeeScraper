@@ -12,10 +12,6 @@ class ProductInfoExtractor(ABC):
 
 class ProductDetailsExtractor(ABC):
     @abstractmethod
-    async def extract_sku(self, page: Any) -> str:
-        pass
-
-    @abstractmethod
     async def extract_displayed_price(self, page: Any) -> str:
         pass
 
