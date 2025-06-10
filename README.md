@@ -40,7 +40,7 @@ uv run playwright install
 And run main:
 
 ```bash
-uv run src/main.py
+uv run main.py
 ```
 
 ---
