@@ -13,7 +13,6 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
     async def extract(self, page: Any) -> ProductDetails:
         sku = await self.extract_sku(page)
         displayed_price = await self.extract_displayed_price(page)
-        process = await self.extract_process(page)
         origins = await self.extract_origins(page)
         formats = await self.extract_formats(page)
         packages = await self.extract_packages(page)
@@ -21,7 +20,7 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
         return ProductDetails(
             sku=sku,
             displayed_price=displayed_price,
-            process=process,
+            process="Unknown",
             origins=origins,
             formats=formats,
             packages=packages,
@@ -40,19 +39,6 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
             return await price_el.inner_text() if price_el else ""
         except Exception:
             return ""
-
-    async def extract_process(self, page: Any) -> str:
-        try:
-            desc_el = await page.query_selector(
-                ".woocommerce-product-details__short-description"
-            )
-            if not desc_el:
-                return "Unknown"
-
-            text = await desc_el.inner_text()
-            return self._detect_process(text)
-        except Exception:
-            return "Unknown"
 
     async def extract_origins(self, page: Any) -> List[str]:
         try:
