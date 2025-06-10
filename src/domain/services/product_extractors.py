@@ -20,10 +20,6 @@ class ProductDetailsExtractor(ABC):
         pass
 
     @abstractmethod
-    async def extract_process(self, page: Any) -> str:
-        pass
-
-    @abstractmethod
     async def extract_origins(self, page: Any) -> List[str]:
         pass
 
