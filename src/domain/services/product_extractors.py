@@ -18,7 +18,3 @@ class ProductDetailsExtractor(ABC):
     @abstractmethod
     async def extract_formats(self, page: Any) -> List[str]:
         pass
-
-    @abstractmethod
-    async def extract_packages(self, page: Any) -> List[str]:
-        pass

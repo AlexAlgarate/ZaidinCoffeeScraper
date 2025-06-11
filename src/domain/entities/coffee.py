@@ -7,4 +7,3 @@ class Coffee:
     price_per_kg: float
     process: str
     formats: list[str]
-    packages: list[str]

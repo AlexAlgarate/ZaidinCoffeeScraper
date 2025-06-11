@@ -25,7 +25,6 @@ class CoffeeMapperImpl(CoffeeMapper):
                 price_per_kg=price.amount,
                 process=details.process,
                 formats=details.formats,
-                packages=details.packages,
             )
         except PriceParsingError as e:
             self._logger.error(f"Error mapping coffee {basic_info.name}: {e.original}")

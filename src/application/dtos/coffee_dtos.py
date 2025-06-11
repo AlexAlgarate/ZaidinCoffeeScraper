@@ -14,4 +14,3 @@ class ProductDetails:
     displayed_price: str
     process: str
     formats: List[str]
-    packages: List[str]

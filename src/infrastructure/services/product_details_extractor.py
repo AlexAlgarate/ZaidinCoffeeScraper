@@ -14,13 +14,11 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
         displayed_price = await self.extract_displayed_price(page)
 
         formats = await self.extract_formats(page)
-        packages = await self.extract_packages(page)
 
         return ProductDetails(
             displayed_price=displayed_price,
             process="Unknown",
             formats=formats,
-            packages=packages,
         )
 
     async def extract_displayed_price(self, page: Any) -> str:
@@ -61,14 +59,3 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
         except Exception as e:
             self._logger.error(f"Error extracting formats: {e}")
             return ["250g"]
-
-    async def extract_packages(self, page: Any) -> List[str]:
-        try:
-            packages_el = await page.query_selector_all(".package-type option")
-            if not packages_el:
-                return ["Grano"]
-
-            packages = [await el.inner_text().strip() for el in packages_el]
-            return packages or ["Grano"]
-        except Exception:
-            return ["Grano"]
