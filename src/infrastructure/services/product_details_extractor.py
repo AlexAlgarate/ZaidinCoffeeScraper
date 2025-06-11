@@ -12,14 +12,13 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
 
     async def extract(self, page: Any) -> ProductDetails:
         displayed_price = await self.extract_displayed_price(page)
-        origins = await self.extract_origins(page)
+
         formats = await self.extract_formats(page)
         packages = await self.extract_packages(page)
 
         return ProductDetails(
             displayed_price=displayed_price,
             process="Unknown",
-            origins=origins,
             formats=formats,
             packages=packages,
         )
@@ -30,22 +29,6 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
             return await price_el.inner_text() if price_el else ""
         except Exception:
             return ""
-
-    async def extract_origins(self, page: Any) -> List[str]:
-        try:
-            desc_el = await page.query_selector(
-                ".woocommerce-product-details__short-description"
-            )
-            if not desc_el:
-                return ["Unknown"]
-
-            text = await desc_el.inner_text()
-            countries = ["Brasil", "Colombia", "Ethiopia", "Kenya", "Guatemala"]
-            origins = [country for country in countries if country in text]
-
-            return origins or ["Unknown"]
-        except Exception:
-            return ["Unknown"]
 
     async def extract_formats(self, page: Any) -> List[str]:
         try:

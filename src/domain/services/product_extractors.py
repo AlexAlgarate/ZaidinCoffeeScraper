@@ -16,10 +16,6 @@ class ProductDetailsExtractor(ABC):
         pass
 
     @abstractmethod
-    async def extract_origins(self, page: Any) -> List[str]:
-        pass
-
-    @abstractmethod
     async def extract_formats(self, page: Any) -> List[str]:
         pass
 

@@ -24,7 +24,6 @@ class CoffeeMapperImpl(CoffeeMapper):
                 name=basic_info.name,
                 price_per_kg=price.amount,
                 process=details.process,
-                origins=details.origins,
                 formats=details.formats,
                 packages=details.packages,
             )

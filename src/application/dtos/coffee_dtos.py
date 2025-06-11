@@ -13,6 +13,5 @@ class ProductBasicInfo:
 class ProductDetails:
     displayed_price: str
     process: str
-    origins: List[str]
     formats: List[str]
     packages: List[str]
