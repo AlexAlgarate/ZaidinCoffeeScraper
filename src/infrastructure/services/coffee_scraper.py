@@ -3,8 +3,8 @@ from urllib.parse import urljoin
 
 from src.application.dtos.coffee_dtos import ProductBasicInfo, ProductDetails
 from src.application.interfaces.logger import ILogger
-from src.domain.services.coffee_scraper import CoffeeScraper
-from src.domain.services.web_client import WebClient
+from src.application.services.coffee_scraper import CoffeeScraper
+from src.application.services.web_client import WebClient
 from src.infrastructure.services.scraping_service import ScrapingService
 
 

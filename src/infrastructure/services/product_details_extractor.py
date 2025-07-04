@@ -3,7 +3,7 @@ from typing import Any, List
 
 from src.application.dtos.coffee_dtos import ProductDetails
 from src.application.interfaces.logger import ILogger
-from src.domain.services.product_extractors import ProductDetailsExtractor
+from src.application.services.product_extractors import ProductDetailsExtractor
 
 
 class WebProductDetailsExtractor(ProductDetailsExtractor):
