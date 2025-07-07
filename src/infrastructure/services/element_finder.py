@@ -1,7 +1,7 @@
 from typing import Any, List
 
+from src.application.services.element_finder import ElementFinder
 from src.domain.configuration.scraping_config import ScrapingConfig
-from src.domain.services.element_finder import ElementFinder
 
 
 class WebElementFinder(ElementFinder):

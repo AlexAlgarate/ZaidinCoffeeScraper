@@ -3,7 +3,7 @@ from typing import Any, List
 
 from src.application.dtos.coffee_dtos import ProductDetails
 from src.application.interfaces.logger import ILogger
-from src.domain.services.product_extractors import ProductDetailsExtractor
+from src.application.services.product_extractors import ProductDetailsExtractor
 
 
 class WebProductDetailsExtractor(ProductDetailsExtractor):
@@ -11,27 +11,14 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
         self._logger = logger
 
     async def extract(self, page: Any) -> ProductDetails:
-        sku = await self.extract_sku(page)
         displayed_price = await self.extract_displayed_price(page)
-        origins = await self.extract_origins(page)
         formats = await self.extract_formats(page)
-        packages = await self.extract_packages(page)
 
         return ProductDetails(
-            sku=sku,
             displayed_price=displayed_price,
             process="Unknown",
-            origins=origins,
             formats=formats,
-            packages=packages,
         )
-
-    async def extract_sku(self, page: Any) -> str:
-        try:
-            sku_el = await page.query_selector('meta[itemprop="sku"]')
-            return await sku_el.get_attribute("content") if sku_el else "Unknown"
-        except Exception:
-            return "Unknown"
 
     async def extract_displayed_price(self, page: Any) -> str:
         try:
@@ -39,22 +26,6 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
             return await price_el.inner_text() if price_el else ""
         except Exception:
             return ""
-
-    async def extract_origins(self, page: Any) -> List[str]:
-        try:
-            desc_el = await page.query_selector(
-                ".woocommerce-product-details__short-description"
-            )
-            if not desc_el:
-                return ["Unknown"]
-
-            text = await desc_el.inner_text()
-            countries = ["Brasil", "Colombia", "Ethiopia", "Kenya", "Guatemala"]
-            origins = [country for country in countries if country in text]
-
-            return origins or ["Unknown"]
-        except Exception:
-            return ["Unknown"]
 
     async def extract_formats(self, page: Any) -> List[str]:
         try:
@@ -87,14 +58,3 @@ class WebProductDetailsExtractor(ProductDetailsExtractor):
         except Exception as e:
             self._logger.error(f"Error extracting formats: {e}")
             return ["250g"]
-
-    async def extract_packages(self, page: Any) -> List[str]:
-        try:
-            packages_el = await page.query_selector_all(".package-type option")
-            if not packages_el:
-                return ["Grano"]
-
-            packages = [await el.inner_text().strip() for el in packages_el]
-            return packages or ["Grano"]
-        except Exception:
-            return ["Grano"]
