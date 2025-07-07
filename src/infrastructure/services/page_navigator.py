@@ -1,6 +1,6 @@
 from typing import Any
 
-from src.domain.services.page_navigator import PageNavigator
+from src.application.services.page_navigator import PageNavigator
 
 
 class WebPageNavigator(PageNavigator):

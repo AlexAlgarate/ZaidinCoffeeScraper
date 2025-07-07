@@ -1,5 +1,4 @@
-import asyncio
-from typing import Any, Callable, List
+from typing import List
 
 from src.domain.entities.coffee import Coffee
 from src.domain.exceptions.coffee_exceptions import CoffeeScrapingError
@@ -13,11 +12,9 @@ class CoffeeRepositoryImpl(CoffeeRepository):
         self,
         coffee_scraper: CoffeeScraper,
         coffee_mapper: CoffeeMapper,
-        async_runner: Callable[..., Any] = asyncio.run,
     ):
         self._scraper = coffee_scraper
         self._mapper = coffee_mapper
-        self._async_runner = async_runner
 
     async def fetch_by_category(self, category_url: str) -> List[Coffee]:
         try:
@@ -38,6 +35,3 @@ class CoffeeRepositoryImpl(CoffeeRepository):
             raise CoffeeScrapingError(
                 f"Error fetching category {category_url}: {str(e)}"
             )
-
-    def fetch_coffees(self, url: str) -> List[Coffee]:
-        return self._async_runner(self.fetch_by_category(url))
